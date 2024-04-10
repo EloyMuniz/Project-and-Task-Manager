@@ -1,0 +1,23 @@
+{
+  "name": "TesteJedis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/EloyMuniz/TesteJedis.git",
+  "author": "Eloy <eloymjunior00@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.12.1",
+    "bcrypt": "^5.1.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13",
+    "prisma": "^5.12.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/nodemailer": "^6.4.14",
+    "typescript": "^5.4.4"
+  }
+}
