@@ -131,7 +131,7 @@ class UserController {
 
             const result = existingEmail?.use_password
             if (!existingEmail) {
-                return res.status(400).json({ message: "Este email não existe em nosso banco de dados!" })
+                return res.status(404).json({ message: "Este email não existe em nosso banco de dados!" })
             }
 
             const checkPassword: boolean = result ? bcrypt.compareSync(use_password, result) : false;
