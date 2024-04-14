@@ -1,4 +1,4 @@
-## How to use
+# How to use
 
 # Certifique-se de ter o Node.js e o Yarn instalados. Clone o repositório e instale as dependências:
 
@@ -16,7 +16,7 @@ yarn dev
 
 yarn start
 
-## Banco de Dados
+# Banco de Dados
 
 # Para gerar o schema do Prisma(ORM), execute:
 
@@ -26,16 +26,16 @@ npx prisma generate
 
 npx prisma migrate
 
-## Testes
+# Testes
 
 # Para executar os testes usando Jest, execute:
 
 yarn test
 
-## Documentação
+# Documentação
 
-# A documentação de todas as APIs do projeto está disponível na rota: /docs.
+A documentação de todas as APIs do projeto está disponível na rota: /docs.
 
-## Contato
+# Contato
 
-# Se tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato!
+ Se tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato!
