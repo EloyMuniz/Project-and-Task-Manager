@@ -1,4 +1,4 @@
-How to use
+# How to use
 
 Certifique-se de ter o Node.js e o Yarn instalados. Clone o repositório e instale as dependências:
 
