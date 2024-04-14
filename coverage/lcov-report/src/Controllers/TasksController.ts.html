@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.91% </span>
+                <span class="strong">39.58% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>46/96</span>
+                <span class='fraction'>38/96</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.91% </span>
+                <span class="strong">39.58% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>46/96</span>
+                <span class='fraction'>38/96</span>
             </div>
         
             
@@ -182,18 +182,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -276,19 +276,19 @@ class TasksController {
                 where: { task_title: task_title }
             })
 &nbsp;
-            if (result<span class="branch-0 cbranch-no" title="branch not covered" > &amp;&amp; result.task_title)</span> <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >                return res.status(409).json({ message: "Já existe uma tarefa de mesmo nome!" })</span>
-<span class="cstat-no" title="statement not covered" >            }</span>
-&nbsp;
-            await prisma.task.create({
-                data: { task_description: task_description, task_title: task_title, project_uuid: project_uuid }
-&nbsp;
-            })
-            return res.status(200).json({ message: "A tarefa foi criada com sucesso!" })
-&nbsp;
-&nbsp;
-&nbsp;
-        } <span class="branch-0 cbranch-no" title="branch not covered" >catch (error) {</span>
+            if (result &amp;&amp; result.task_title) {
+                return res.status(409).json({ message: "Já existe uma tarefa de mesmo nome!" })
+            }
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" >            await prisma.task.create({</span>
+<span class="cstat-no" title="statement not covered" >                data: { task_description: task_description, task_title: task_title, project_uuid: project_uuid }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >            })</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(200).json({ message: "A tarefa foi criada com sucesso!" })</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        } catch (error) {</span>
 <span class="cstat-no" title="statement not covered" >            return res.status(400).json({ message: "Não foi possível criar uma nova tarefa!" })</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
 &nbsp;
@@ -355,7 +355,7 @@ export default new TasksController()</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-14T15:28:28.283Z
+                at 2024-04-14T15:30:33.572Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
