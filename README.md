@@ -1,30 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-</head>
-<body>
-  <h1>Funcionalidades Principais do Gerenciador de Projetos</h1>
-  <p>Este é um sistema de gerenciamento de projetos que oferece várias funcionalidades para ajudar na organização e acompanhamento de projetos.</p>
+## How to use
 
-  <h2>Criar um Novo Projeto</h2>
-  <p>Os usuários podem criar um novo projeto especificando um nome, uma descrição e a data de início.</p>
+# Certifique-se de ter o Node.js e o Yarn instalados. Clone o repositório e instale as dependências:
 
-  <h2>Listar Todos os Projetos</h2>
-  <p>Todos os projetos existentes são listados para os usuários visualizarem.</p>
+git clone https://github.com/EloyMuniz/TesteJedis
 
-  <h2>Adicionar Tarefas a um Projeto</h2>
-  <p>Os usuários podem adicionar tarefas a um projeto existente, fornecendo um título, uma descrição e a data de conclusão da tarefa.</p>
+# Instalar dependências
 
-  <h2>Listar Tarefas de um Projeto</h2>
-  <p>As tarefas associadas a um projeto específico são exibidas para os usuários.</p>
+yarn install
 
-  <h2>Marcar uma Tarefa como Concluída</h2>
-  <p>Os usuários podem marcar uma tarefa específica como concluída quando terminarem.</p>
+# Para iniciar o servidor em modo de desenvolvimento e iniciar automaticamente sempre que houver alterações no código-fonte, use:
 
-  <h2>Excluir uma Tarefa</h2>
-  <p>Os usuários têm a capacidade de excluir uma tarefa de um projeto.</p>
-</body>
-</html>
+yarn dev
+
+# Para iniciar o servidor em um ambiente de produção, use:
+
+yarn start
+
+## Banco de Dados
+
+# Para gerar o schema do Prisma(ORM), execute:
+
+npx prisma generate
+
+# Para migrar as tabelas do banco de dados, execute:
+
+npx prisma migrate
+
+## Testes
+
+# Para executar os testes usando Jest, execute:
+
+yarn test
+
+## Documentação
+
+# A documentação de todas as APIs do projeto está disponível na rota: /docs.
+
+## Contato
+
+# Se tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato!

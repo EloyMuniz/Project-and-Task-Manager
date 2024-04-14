@@ -1,0 +1,510 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API's de Fluxo de Usuários, Projetos e Tarefas",
+    "description": "APIs para registro, login, recuperação de senha, criação e visualização de projetos.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "Cadastrar novo usuário",
+        "description": "Cadastra um novo usuário no banco de dados e envia um email de confirmação.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "use_email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email do usuário"
+                  },
+                  "use_name": {
+                    "type": "string",
+                    "description": "Nome do usuário"
+                  },
+                  "use_password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "Senha do usuário"
+                  },
+                  "use_confirm_password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "Confirmação da senha do usuário"
+                  }
+                },
+                "required": [
+                  "use_email",
+                  "use_name",
+                  "use_password",
+                  "use_confirm_password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cadastro realizado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao cadastrar usuário"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login de usuário",
+        "description": "Autentica um usuário existente no sistema.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "use_email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email do usuário"
+                  },
+                  "use_password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "Senha do usuário"
+                  }
+                },
+                "required": ["use_email", "use_password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login efetuado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Mensagem de sucesso"
+                    },
+                    "acesso": {
+                      "type": "string",
+                      "description": "Token de acesso"
+                    },
+                    "use_id": {
+                      "type": "string",
+                      "description": "ID do usuário"
+                    },
+                    "use_name": {
+                      "type": "string",
+                      "description": "Nome do usuário"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro ao efetuar login"
+          }
+        }
+      }
+    },
+    "/sendemail": {
+      "post": {
+        "summary": "Enviar email de recuperação de senha",
+        "description": "Inicia o processo de recuperação de senha enviando um email com um código único para o usuário.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "use_email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email do usuário"
+                  }
+                },
+                "required": ["use_email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email de recuperação enviado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao enviar email de recuperação"
+          }
+        }
+      }
+    },
+    "/password-recovery": {
+      "post": {
+        "summary": "Recuperar senha",
+        "description": "Permite a recuperação da senha do usuário utilizando um código enviado por email.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "use_email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email do usuário"
+                  },
+                  "use_token": {
+                    "type": "string",
+                    "description": "Código de recuperação enviado por email"
+                  },
+                  "use_password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "Nova senha do usuário"
+                  },
+                  "use_confirm_password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "Confirmação da nova senha do usuário"
+                  }
+                },
+                "required": [
+                  "use_email",
+                  "use_token",
+                  "use_password",
+                  "use_confirm_password"
+                ]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Senha atualizada com sucesso"
+            },
+            "400": {
+              "description": "Erro ao recuperar senha"
+            }
+          }
+        }
+      }
+    },
+    "/createproject": {
+      "post": {
+        "summary": "Criar novo projeto",
+        "description": "Cria um novo projeto e o associa ao usuário autenticado.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "project_name": {
+                    "type": "string",
+                    "description": "Nome do projeto"
+                  },
+                  "project_description": {
+                    "type": "string",
+                    "description": "Descrição do projeto"
+                  },
+                  "use_uuid": {
+                    "type": "string",
+                    "description": "ID do usuário"
+                  }
+                },
+                "required": ["project_name", "project_description", "use_uuid"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Projeto criado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao criar projeto"
+          },
+          "409": {
+            "description": "O nome do projeto já existe"
+          }
+        }
+      }
+    },
+    "/projectvizualize": {
+      "post": {
+        "summary": "Visualizar projetos",
+        "description": "Retorna uma lista de projetos associados ao usuário autenticado.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "use_uuid": {
+                    "type": "string",
+                    "description": "ID do usuário"
+                  }
+                },
+                "required": ["use_uuid"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lista de projetos retornada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "project_description": {
+                            "type": "string",
+                            "description": "Descrição do projeto"
+                          },
+                          "project_name": {
+                            "type": "string",
+                            "description": "Nome do projeto"
+                          },
+                          "project_created_at": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Data de criação do projeto (no formato YYYY-MM-DD)"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro ao retornar informações"
+          }
+        }
+      }
+    },
+    "/createtask": {
+      "post": {
+        "summary": "Criar nova tarefa",
+        "description": "Cria uma nova tarefa associada a um projeto.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "task_description": {
+                    "type": "string",
+                    "description": "Descrição da tarefa"
+                  },
+                  "task_title": {
+                    "type": "string",
+                    "description": "Título da tarefa"
+                  },
+                  "task_date_conclude": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Data de conclusão da tarefa (opcional)"
+                  },
+                  "project_uuid": {
+                    "type": "string",
+                    "description": "ID do projeto associado à tarefa"
+                  }
+                },
+                "required": ["task_description", "task_title", "project_uuid"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tarefa criada com sucesso"
+          },
+          "400": {
+            "description": "Erro ao criar tarefa"
+          },
+          "409": {
+            "description": "Já existe uma tarefa com mesmo título"
+          }
+        }
+      }
+    },
+    "/taskvizualize": {
+      "post": {
+        "summary": "Visualizar tarefas",
+        "description": "Visualiza as tarefas associadas a um projeto.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "project_uuid": {
+                    "type": "string",
+                    "description": "ID do projeto"
+                  }
+                },
+                "required": ["project_uuid"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lista de tarefas retornada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "task_description": {
+                        "type": "string",
+                        "description": "Descrição da tarefa"
+                      },
+                      "task_title": {
+                        "type": "string",
+                        "description": "Título da tarefa"
+                      },
+                      "task_date_conclude": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Data de conclusão da tarefa"
+                      },
+                      "project_uuid": {
+                        "type": "string",
+                        "description": "ID do projeto associado à tarefa"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro ao retornar informações"
+          }
+        }
+      }
+    },
+    "/taskconcluded": {
+      "put": {
+        "summary": "Concluir tarefa",
+        "description": "Atualiza o status de conclusão de uma tarefa.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "task_uuid": {
+                    "type": "string",
+                    "description": "ID da tarefa"
+                  },
+                  "task_concluded": {
+                    "type": "boolean",
+                    "description": "Status de conclusão da tarefa"
+                  }
+                },
+                "required": ["task_uuid", "task_concluded"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Status de conclusão atualizado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao concluir a tarefa"
+          }
+        }
+      }
+    },
+    "/taskexcluded": {
+      "put": {
+        "summary": "Excluir/recuperar tarefa",
+        "description": "Atualiza o status de exclusão de uma tarefa.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "task_uuid": {
+                    "type": "string",
+                    "description": "ID da tarefa"
+                  },
+                  "task_excluded": {
+                    "type": "boolean",
+                    "description": "Status de exclusão da tarefa"
+                  }
+                },
+                "required": ["task_uuid", "task_excluded"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Status de exclusão atualizado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao excluir a tarefa"
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "BearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
+}
