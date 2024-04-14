@@ -4,7 +4,7 @@ Certifique-se de ter o Node.js e o Yarn instalados. Clone o repositório:
 
 $ git clone https://github.com/EloyMuniz/TesteJedis
 
-# Instalar dependências
+# Instalar dependências e iniciar servidor
 
 $ yarn install
 
@@ -12,7 +12,7 @@ Para iniciar o servidor em modo de desenvolvimento e iniciar automaticamente sem
 
 $ yarn dev
 
-# Para iniciar o servidor em um ambiente de produção, use:
+Para iniciar o servidor em um ambiente de produção, use:
 
 $ yarn start
 
@@ -22,11 +22,11 @@ Para gerar o schema do Prisma(ORM), execute:
 
 $ npx prisma generate
 
-# Para migrar as tabelas do banco de dados, execute:
+Para migrar as tabelas do banco de dados, execute:
 
 $ npx prisma migrate
 
-Testes
+# Testes
 
 Para executar os testes usando Jest, execute:
 
