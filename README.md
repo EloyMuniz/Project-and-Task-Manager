@@ -1,6 +1,6 @@
 # How to use
 
-Certifique-se de ter o Node.js e o Yarn instalados. Clone o repositório e instale as dependências:
+Certifique-se de ter o Node.js e o Yarn instalados. Clone o repositório:
 
 $ git clone https://github.com/EloyMuniz/TesteJedis
 
@@ -16,7 +16,7 @@ $ yarn dev
 
 $ yarn start
 
-Banco de Dados
+# Banco de Dados
 
 Para gerar o schema do Prisma(ORM), execute:
 
