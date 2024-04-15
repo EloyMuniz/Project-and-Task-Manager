@@ -1,3 +1,7 @@
+# Definições Gerais
+
+ A aplicação back-end trata-se de um gerenciador de projetos que permite aos usuários criar e gerenciar projetos e suas respectivas tarefas.
+
 # How to use
 
 Certifique-se de ter o Node.js e o Yarn instalados. Clone o repositório:
