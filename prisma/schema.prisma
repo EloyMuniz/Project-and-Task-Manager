@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,22 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//Tabela de usuários
 model users {
-  use_uuid        String    @id() @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  use_name        String?   @db.VarChar(50)
-  use_token       String?   @db.VarChar(50)
-  use_date_expire DateTime?
+  use_uuid        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   use_email       String?   @db.VarChar(50)
   use_password    String?   @db.VarChar(255)
   use_created_at  DateTime  @default(now()) @db.Timestamp(6)
   use_updated_at  DateTime  @default(now()) @db.Timestamp(6)
+  use_name        String?   @db.VarChar(50)
+  use_date_expire DateTime?
+  use_token       String?   @db.VarChar(50)
   project         project[]
 }
 
-//Tabela de projetos
 model project {
-  project_uuid        String   @id() @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_uuid        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   project_name        String?  @db.VarChar(50)
   project_description String?  @db.VarChar(255)
   project_created_at  DateTime @default(now()) @db.Timestamp(6)
@@ -37,16 +29,16 @@ model project {
   user                users?   @relation(fields: [use_uuid], references: [use_uuid])
   task                task[]
 }
-//Tabela de tarefas
+
 model task {
-  task_uuid          String   @id() @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  task_uuid          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   task_title         String?  @db.VarChar(50)
   task_description   String?  @db.VarChar(255)
   task_date_conclude String?
   task_concluded     Boolean?
   task_excluded      Boolean?
   project_uuid       String?  @db.Uuid
-  project            project? @relation(fields: [project_uuid], references: [project_uuid])
   task_created_at    DateTime @default(now()) @db.Timestamp(6)
   task_updated_at    DateTime @default(now()) @db.Timestamp(6)
+  project            project? @relation(fields: [project_uuid], references: [project_uuid])
 }
