@@ -40,4 +40,4 @@ A documentação de todas as APIs foi criada com Swagger e está disponível na 
 
 Se tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato!
 
-![Diagrama do Schema do Banco](prisma.svg)
+![Diagrama do Schema do Banco](prisma.png)
