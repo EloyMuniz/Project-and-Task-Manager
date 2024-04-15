@@ -24,7 +24,7 @@ $ npx prisma generate
 
 Para migrar as tabelas do banco de dados, execute:
 
-$ npx prisma migrate
+$ npx prisma migrate dev
 
 # Testes
 
@@ -34,7 +34,7 @@ $ yarn test
 
 # Documentação
 
-A documentação de todas as APIs do projeto está disponível na rota: /docs.
+A documentação de todas as APIs foi criada com Swagger e está disponível na rota: /docs
 
 # Contato
 
