@@ -77,31 +77,34 @@ class UserController {
 
                 }
             })
-            const emailBody = `
-                <p>Olá,${use_name}</p>
-                <p>Agradecemos por se cadastrar em nosso Gerenciador de Tarefas!</p>
 
-            `;
+            //Um fluxo que envia um email para o usuário cadastrado confirmando o sucesso do registro
 
-            const mailOptions = {
-                from: "",
-                to: [use_email],
-                subject: "Criação de conta no Gerenciador de Projetos",
-                html: emailBody,
-            };
+            // const emailBody = `
+            //     <p>Olá,${use_name}</p>
+            //     <p>Agradecemos por se cadastrar em nosso Gerenciador de Tarefas!</p>
 
-            // Enviar o email
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.error(error);
-                    return res.status(500).json({ message: "Erro ao enviar o email." });
-                } else {
-                    return res.status(200).json({
+            // `;
 
-                        message: "Email enviado com sucesso! ",
-                    });
-                }
-            });
+            // const mailOptions = {
+            //     from: "",
+            //     to: [use_email],
+            //     subject: "Criação de conta no Gerenciador de Projetos",
+            //     html: emailBody,
+            // };
+
+            // // Enviar o email
+            // transporter.sendMail(mailOptions, function (error, info) {
+            //     if (error) {
+            //         console.error(error);
+            //         return res.status(500).json({ message: "Erro ao enviar o email." });
+            //     } else {
+            //         return res.status(200).json({
+
+            //             message: "Email enviado com sucesso! ",
+            //         });
+            //     }
+            // });
             return res.status(200).json({ message: 'Seus dados foram cadastrados com sucesso!' })
 
         } catch (error) {
