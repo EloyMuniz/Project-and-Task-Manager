@@ -142,8 +142,8 @@ class UserController {
                 return res.status(404).json({ message: "Senha inválida" });
             }
 
-            // const secret = process.env.SECRET;
-            const secret = "241432432sadasxzacs"
+            const secret = process.env.SECRET;
+
             if (secret === undefined) {
                 return res.status(400).json({ message: "A variável de ambiente SECRET não está definida." });
             }
