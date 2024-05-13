@@ -11,6 +11,7 @@ const checkToken = (req: Request, res: Response, next: NextFunction) => {
     if (!token) return res.status(401).json({ message: 'Acesso negado!' });
 
     try {
+        
         const secret = process.env.SECRET as string;
         if (!secret) throw new Error('A variável de ambiente SECRET não está definida.');
 
